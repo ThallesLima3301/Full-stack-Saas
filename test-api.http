@@ -1,0 +1,52 @@
+### Health Check
+GET http://localhost:5000/health
+
+### Registrar Usuário
+POST http://localhost:5000/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "name": "Usuário Teste",
+  "email": "teste@test2e.com",
+  "password": "123456"
+}
+
+### Login
+POST http://localhost:5000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "teste@teste.com",
+  "password": "123456"
+}
+
+### Criar Projeto (substitua TOKEN pelo token que receber no login)
+POST http://localhost:5000/api/v1/projects
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlMTNmZWM3Ny01NTdmLTRmNTItYjkzZC1lMzNmM2NkODEzNmMiLCJlbWFpbCI6InRlc3RlQHRlc3QyZS5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3MTg3NjU3NCwiZXhwIjoxNzcxODc3NDc0fQ.pwJ_K4D5ywnjpfzl_PRJj9pY9nPhDGH-Pm26E5jItIY
+
+{
+  "name": "Meu Primeiro Projeto",
+  "description": "Projeto de teste"
+}
+
+### Listar Projetos
+GET http://localhost:5000/api/v1/projects
+Authorization: Bearer SEU_TOKEN_AQUI
+
+### Criar Tarefa
+POST http://localhost:5000/api/v1/tasks
+Content-Type: application/json
+Authorization: Bearer SEU_TOKEN_AQUI
+
+{
+  "title": "Minha primeira tarefa",
+  "description": "Descrição da tarefa",
+  "projectId": "ID_DO_PROJETO",
+  "status": "TODO",
+  "priority": "HIGH"
+}
+
+### Listar Tarefas do Projeto
+GET http://localhost:5000/api/v1/tasks/project/ID_DO_PROJETO
+Authorization: Bearer SEU_TOKEN_AQUI
